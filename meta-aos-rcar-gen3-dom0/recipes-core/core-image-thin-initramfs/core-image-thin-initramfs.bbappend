@@ -2,7 +2,10 @@
 
 IMAGE_POSTPROCESS_COMMAND += "set_image_version; "
 
-IMAGE_INSTALL_append = " runx"
+IMAGE_INSTALL_append = " runx \
+    openssh-sshd \
+    haveged \
+"
 
 set_image_version() {
     install -d ${DEPLOY_DIR_IMAGE}/aos
