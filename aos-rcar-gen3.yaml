@@ -248,6 +248,9 @@ components:
         - [XT_OP_TEE_FLAVOUR, "%{XT_OP_TEE_FLAVOUR}"]
         - [IMAGE_FSTYPES_append, " ext4"]
 
+        # Enable seccomp for crun
+        - [DISTRO_FEATURES_append, " seccomp"]
+
         # Aos configuration
         - [AOS_RUNNER, "crun"]
         - [DOMF_IMAGE_VERSION, "%{AOS_DOMF_IMAGE_VERSION}"]
