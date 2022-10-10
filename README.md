@@ -78,7 +78,7 @@ optional arguments:
   --MACHINE {h3ulcb-4x2g-ab,h3ulcb-4x2g,h3ulcb-4x2g-kf,m3ulcb,salvator-x-m3,salvator-xs-m3-2x4g,salvator-xs-h3,salvator-xs-h3-4x2g,salvator-x-h3-4x2g,salvator-x-h3}
                         RCAR Gen3-based device
   --VIS_DATA_PROVIDER {telemetryemulator,renesassimulator}
-                        Sepecifieds plugin for VIS automotive data
+                        Specifies plugin for VIS automotive data
 ```
 
 To build for AosBox use the following command line: `moulin aos-rcar-gen3.yaml`.

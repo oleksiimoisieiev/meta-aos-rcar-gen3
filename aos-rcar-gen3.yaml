@@ -484,14 +484,14 @@ parameters:
 
   # Aos VIS data provider
   VIS_DATA_PROVIDER:
-    desc: "Sepecifieds plugin for VIS automotive data"
-    telemetryemulator:
+    desc: "Specifies plugin for VIS automotive data"
+    renesassimulator:
       default: true
       overrides:
         variables:
-          AOS_VIS_DATA_PROVIDER: "telemetryemulatoradapter"
+          AOS_VIS_DATA_PROVIDER: "renesassimulatoradapter"
 
-    renesassimulator:
+    telemetryemulator:
       overrides:
         variables:
-          AOS_VIS_DATA_PROVIDER: "renesassimulatoradapter"
+          AOS_VIS_DATA_PROVIDER: "telemetryemulatoradapter"
