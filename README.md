@@ -52,7 +52,7 @@ one file from it: `aos-rcar-gen3.yaml`. During build `moulin` will
 fetch this repository again into `yocto/` directory. So, to avoid
 possible confusion, we recommend to download only `aos-rcar-gen3.yaml`:
 
-```sh
+```bash
 curl -O https://raw.githubusercontent.com/aoscloud/meta-aos-rcar-gen3/master/aos-rcar-gen3.yaml
 ```
 
@@ -62,7 +62,7 @@ Moulin is used to generate Ninja build file: `moulin aos-rcar-gen3.yaml`.
 This project provides a number of additional options. You can use check them
 with `--help-config` command line option:
 
-```sh
+```bash
 moulin aos-rcar-gen3.yaml --help-config
 usage: /home/oleksandr_grytsov/.local/bin/moulin aos-rcar-gen3.yaml
    [--MACHINE {h3ulcb-4x2g-ab,h3ulcb-4x2g,h3ulcb-4x2g-kf,m3ulcb,salvator-x-m3,salvator-xs-m3-2x4g,salvator-xs-h3,salvator-xs-h3-4x2g,salvator-x-h3-4x2g,salvator-x-h3}]
@@ -113,7 +113,7 @@ In standalone mode`rouge` accepts the same parameters like
 
 You can prepare image by running:
 
-```sh
+```bash
 rouge aos-rcar-gen3.yaml -i full
 ```
 
@@ -121,7 +121,7 @@ This will create file `full.img` in your current directory.
 
 Also you can write image directly to a SD card by running:
 
-```sh
+```bash
 sudo rouge aos-rcar-gen3.yaml -i full -so /dev/sdX
 ```
 
@@ -150,7 +150,7 @@ moulin build is successfully done. It means, after doing any source changes,
 
 The following commands should be performed to generate the Aos image:
 
-```sh
+```bash
 cd yocto/
 source poky/oe-init-build-env build-dom0/
 bitbake aos-update
