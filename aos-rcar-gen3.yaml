@@ -12,8 +12,8 @@ variables:
   GENERIC_MACHINE: "generic-armv8-xt"
 
   # Aos configuration
-  AOS_BUNDLE_IMAGE_VERSION: "1.0.0"
-  AOS_BUNDLE_REF_VERSION: "0.9.0"
+  AOS_BUNDLE_IMAGE_VERSION: "2.0.0"
+  AOS_BUNDLE_REF_VERSION: "1.0.0"
   AOS_DOM0_IMAGE_VERSION: "%{AOS_BUNDLE_IMAGE_VERSION}"
   AOS_DOMD_IMAGE_VERSION: "%{AOS_BUNDLE_IMAGE_VERSION}"
   AOS_DOMF_IMAGE_VERSION: "%{AOS_BUNDLE_IMAGE_VERSION}"
@@ -29,25 +29,25 @@ common_data:
   sources: &COMMON_SOURCES
     - type: git
       url: "git://git.yoctoproject.org/poky"
-      rev: 0566db5
+      rev: "9ae9138"
     - type: git
       url: "git://git.openembedded.org/meta-openembedded"
-      rev: 6792ebd
+      rev: "6792ebd"
     - type: git
       url: "git://git.yoctoproject.org/meta-virtualization"
-      rev: a63a54d
+      rev: "beea119"
     - type: git
       url: "https://github.com/xen-troops/meta-xt-common.git"
-      rev: 9d218e5
+      rev: "e27c46b"
     - type: git
       url: "https://github.com/xen-troops/meta-xt-rcar.git"
-      rev: 3f40999
+      rev: "3f40999"
     - type: git
       url: "https://github.com/aoscloud/meta-aos.git"
-      rev: v5.2.1
+      rev: "v6.0.2"
     - type: git
       url: "https://github.com/aoscloud/meta-aos-rcar-gen3.git"
-      rev: v1.0.0
+      rev: "v2.0.0"
 
   # Common configuration options for all yocto-based domains
   conf: &COMMON_CONF
@@ -168,10 +168,10 @@ components:
       - *COMMON_SOURCES
       - type: git
         url: "https://github.com/xen-troops/meta-renesas.git"
-        rev: Renesas-Yocto-v5.1-patched
+        rev: "Renesas-Yocto-v5.1-patched"
       - type: git
         url: "git://git.yoctoproject.org/meta-selinux"
-        rev: 1a13839
+        rev: "1a13839"
 
     builder:
       type: yocto
@@ -231,10 +231,10 @@ components:
       - *COMMON_SOURCES
       - type: git
         url: "git://git.yoctoproject.org/meta-arm"
-        rev: 6954705
+        rev: "08c44df"
       - type: git
         url: "git://git.yoctoproject.org/meta-security"
-        rev: c62970f
+        rev: "c62970f"
 
     builder:
       type: yocto
@@ -247,6 +247,9 @@ components:
         - [XT_DOM_NAME, "domf"]
         - [XT_OP_TEE_FLAVOUR, "%{XT_OP_TEE_FLAVOUR}"]
         - [IMAGE_FSTYPES_append, " ext4"]
+
+        # Enable seccomp for crun
+        - [DISTRO_FEATURES_append, " seccomp"]
 
         # Aos configuration
         - [AOS_RUNNER, "crun"]
@@ -385,7 +388,7 @@ parameters:
             sources:
               - type: git
                 url: "https://github.com/CogentEmbedded/meta-rcar.git"
-                rev: v5.1.0
+                rev: "v5.1.0"
             builder:
               layers:
                 - "../meta-rcar/meta-rcar-gen3-adas"
@@ -481,14 +484,14 @@ parameters:
 
   # Aos VIS data provider
   VIS_DATA_PROVIDER:
-    desc: "Sepecifieds plugin for VIS automotive data"
-    telemetryemulator:
+    desc: "Specifies plugin for VIS automotive data"
+    renesassimulator:
       default: true
       overrides:
         variables:
-          AOS_VIS_DATA_PROVIDER: "telemetryemulatoradapter"
+          AOS_VIS_DATA_PROVIDER: "renesassimulatoradapter"
 
-    renesassimulator:
+    telemetryemulator:
       overrides:
         variables:
-          AOS_VIS_DATA_PROVIDER: "renesassimulatoradapter"
+          AOS_VIS_DATA_PROVIDER: "telemetryemulatoradapter"

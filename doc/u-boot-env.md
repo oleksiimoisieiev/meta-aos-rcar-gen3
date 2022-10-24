@@ -74,10 +74,6 @@ setenv bootcmd run bootcmd_sd3
 ### eMMC boot
 
 ```sh
-# set load address
-setenv loadaddr '0x58000000'
-
-# update emmc_... vars to use ${aos_boot_slot}
 setenv emmc_xen_load ext2load mmc 1:1 0x48080000 xen
 setenv emmc_dtb_load 'ext2load mmc 1:1 0x48000000 xen.dtb; fdt addr 0x48000000; fdt resize; fdt mknode / boot_dev; fdt set /boot_dev device mmcblk0'
 setenv emmc_kernel_load ext2load mmc 1:1 0x8a000000 Image
@@ -90,6 +86,10 @@ setenv bootcmd run bootcmd_emmc
 ### eMMC boot for Aos update
 
 ```sh
+# set load address
+setenv loadaddr '0x58000000'
+
+# update emmc_... vars to use ${aos_boot_slot}
 setenv emmc_dtb_load 'ext2load mmc 1:${aos_boot_slot} 0x48000000 xen.dtb; fdt addr 0x48000000; fdt resize; fdt mknode / boot_dev; fdt set /boot_dev device mmcblk0'
 setenv emmc_dtb_load 'ext2load mmc 1:${aos_boot_slot} 0x48000000 xen.dtb; fdt addr 0x48000000; fdt resize; fdt mknode / boot_dev; fdt set /boot_dev device mmcblk0'
 setenv emmc_kernel_load 'ext2load mmc 1:${aos_boot_slot} 0x8a000000 Image'

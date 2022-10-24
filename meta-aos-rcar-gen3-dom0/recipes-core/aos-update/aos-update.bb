@@ -40,9 +40,9 @@ BUNDLE_DOMF_DESC = "DomF image"
 ROOTFS_IMAGE_DIR = "${BUNDLE_WORK_DIR}"
 ROOTFS_EXCLUDE_FILES = "var/*"
 
-DOM0_IMAGE_FILE = "dom0-${BUNDLE_DOM0_TYPE}-${DOM0_IMAGE_VERSION}.gz"
-DOMD_IMAGE_FILE = "domd-${BUNDLE_DOMD_TYPE}-${DOMD_IMAGE_VERSION}.squashfs"
-DOMF_IMAGE_FILE = "domf-${BUNDLE_DOMF_TYPE}-${DOMF_IMAGE_VERSION}.squashfs"
+DOM0_IMAGE_FILE = "${BUNDLE_DOM0_ID}-${BUNDLE_DOM0_TYPE}-${DOM0_IMAGE_VERSION}.gz"
+DOMD_IMAGE_FILE = "${BUNDLE_DOMD_ID}-${BUNDLE_DOMD_TYPE}-${DOMD_IMAGE_VERSION}.squashfs"
+DOMF_IMAGE_FILE = "${BUNDLE_DOMF_ID}-${BUNDLE_DOMF_TYPE}-${DOMF_IMAGE_VERSION}.squashfs"
 
 DOM0_PART_SIZE = "128"
 DOM0_PART_LABEL = "boot"
@@ -94,7 +94,7 @@ python do_create_metadata() {
     elif d.getVar("BUNDLE_RH850_TYPE"):
         bb.fatal("Wrong RH850 image type: %s" % d.getVar("BUNDLE_RH850_TYPE"))
 
-    write_image_metadata(d.getVar("BUNDLE_WORK_DIR"), d.getVar("BOARD_MODEL"), components_metadata)
+    write_image_metadata(d.getVar("BUNDLE_WORK_DIR"), components_metadata)
 }
 
 do_create_dom0_image() {
