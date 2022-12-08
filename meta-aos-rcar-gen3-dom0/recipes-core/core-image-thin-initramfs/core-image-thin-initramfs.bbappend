@@ -5,6 +5,7 @@ IMAGE_POSTPROCESS_COMMAND += "set_image_version; "
 IMAGE_INSTALL_append = " runx \
     openssh-sshd \
     haveged \
+    dom0-network \
 "
 
 set_image_version() {
