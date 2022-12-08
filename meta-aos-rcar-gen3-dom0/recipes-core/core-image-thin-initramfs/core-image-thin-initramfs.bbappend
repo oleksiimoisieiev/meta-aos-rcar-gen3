@@ -6,6 +6,7 @@ IMAGE_INSTALL_append = " runx \
     openssh-sshd \
     haveged \
     dom0-network \
+    dom0-device \
 "
 
 set_image_version() {
