@@ -343,6 +343,11 @@ images:
         type: ext4
         size: 1024 MiB
 
+      dom0_aos:
+        gpt_type: 0FC63DAF-8483-4772-8E79-3D69D8477DE4 # Linux filesystem data
+        type: ext4
+        size: 100 MiB
+
 parameters:
   # Machines
   MACHINE:
