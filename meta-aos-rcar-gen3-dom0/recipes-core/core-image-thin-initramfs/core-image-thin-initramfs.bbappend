@@ -1,4 +1,5 @@
 # Aos related tasks
+INITRAMFS_MAXSIZE="141072"
 
 IMAGE_POSTPROCESS_COMMAND += "set_image_version; "
 
