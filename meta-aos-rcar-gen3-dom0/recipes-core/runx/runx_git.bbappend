@@ -5,6 +5,7 @@ SRCREV_runx = "0c7edb3453398d7a0c594ce026c9c1e93c2541cc"
 SRC_URI = " \
     git://github.com/lf-edge/runx;nobranch=1;name=runx \
     file://0001-files-create-Update-create-script-to-start-unikernel.patch \
+    file://pv-sender \
 "
 
 SRC_URI[md5sum] = "ce9b2d974d27408a61c53a30d3f98fb9"
@@ -20,6 +21,10 @@ DEPENDS_remove = "xz-native bc-native qemu-native"
 RDEPENDS_${PN}_remove = "go-build"
 
 RUNX_USE_INTERNAL_BUSYBOX ?= ""
+
+FILES_${PN} += " \
+    ${datadir}/runX/pv-sender \
+"
 
 do_compile() {
     export CC="${CC}"
@@ -46,4 +51,6 @@ do_install() {
     install -m 755 ${S}/files/mount ${D}/${datadir}/runX
     install -m 755 ${S}/files/serial_start ${D}/${datadir}/runX
     install -m 755 ${S}/sendfd/sendfd ${D}/${datadir}/runX
+
+    install -m 755 ${WORKDIR}/pv-sender ${D}/${datadir}/runX
 }
