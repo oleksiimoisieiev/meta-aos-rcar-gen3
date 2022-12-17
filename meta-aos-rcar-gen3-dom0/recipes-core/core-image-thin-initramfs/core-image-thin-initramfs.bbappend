@@ -8,6 +8,8 @@ IMAGE_INSTALL_append = " runx \
     haveged \
     dom0-network \
     dom0-device \
+    xen-tools-libxenstat \
+    xen-tools-xenstat \
 "
 
 set_image_version() {
