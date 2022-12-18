@@ -1,0 +1,13 @@
+[Unit]
+Description=Dom0 device
+Requires=domd.service
+After=domd.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/xen/bin/dom0-add-device
+ExecStop=/usr/lib/xen/bin/dom0-rm-device
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
